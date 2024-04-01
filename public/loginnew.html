@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/css1.css" />
+</head>
+<body>
+
+<div class="split1 left">
+  <div class="centered">
+    <img id="pic" src="" alt="Archie">
+    <h4 id="name"></h2>
+    <p id="d"></p>
+  </div>
+</div>
+
+<div class="split2 right">
+  <!-- <div class="centered"> -->
+    <div>
+    <!-- <img src="img_avatar.png" alt="Avatar man"> -->
+    <center><h2>Inbox</h2></center>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Tickets" title="Type in a name">
+      
+    <table id="myTable">
+      <tr class="header">
+        <th style="width:60%;">Ticket ID</th>
+        <th style="width:40%;">Ticket Name</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>internet not working</td>
+      </tr>
+      <tbody id= "tickets"></tbody>
+    </table>
+
+    <div id="container"></div>
+  </div>
+</div>
+     
+</body>
+<script>
+  let name = "{{name}}";
+  let pic="{{pic}}"
+  let department="{{department}}"
+  //let querytrack=Array.from("{{q}}")
+  //alert(querytrack);
+  document.getElementById("name").innerHTML =name;
+  document.getElementById("d").innerHTML =department;
+  document.getElementById("pic").src = "images\\"+pic;
+  //alert(pic);
+  function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+  
+  //function to populate table
+</script>
+</html> 
